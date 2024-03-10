@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import poster from "../../../public/poster-post.png";
 import { useDispatch, useSelector } from "react-redux";
 import { findAllPost } from "../../service/post.service";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Posts = () => {
   const dispatch = useDispatch();
   const dataPost = useSelector((state) => state.post.data);
+  const [filterAll, setFilterAll] = useState();
 
   const loadData = () => {
     dispatch(findAllPost());
@@ -16,9 +17,20 @@ const Posts = () => {
     loadData();
   }, []);
 
-  const dataChangeArrr = Object.values(dataPost);
-
-  const filterData = dataChangeArrr?.filter((post) => post.status === 1);
+  // lọc data qua status
+  useEffect(() => {
+    if (dataPost && Object.keys(dataPost).length > 0) {
+      const filteredData = {};
+      for (const [key, value] of Object.entries(dataPost)) {
+        if (value?.status === 1) {
+          filteredData[key] = value;
+        }
+      }
+      setFilterAll(status === 9 ? dataPost : filteredData);
+    } else {
+      setFilterAll(null); // Đặt filterAll thành null khi không có dữ liệu
+    }
+  }, [dataPost]);
 
   return (
     <>
@@ -30,33 +42,34 @@ const Posts = () => {
           </span>
         </div>
         <div className="grid grid-cols-3 gap-6 px-[5%] my-10">
-          {filterData?.map((item) => (
-            <Link
-              to={`/posts/${item.id}`}
-              key={item.id}
-              className="h-[520px] justify-between flex flex-col cursor-pointer bg-white rounded-xl shadow-xl hover:shadow-2xl"
-            >
-              <img
-                className="rounded-xl w-full h-[250px] object-cover"
-                src={item.cover_img}
-                alt=""
-              />
-              <div className="h-[234px] flex flex-col justify-between gap-4 px-5 py-2">
-                <h3 className="text-xl font-medium h-auto line-clamp-3">
-                  {item.title}
-                </h3>
-                <div className="">
-                  <span className="max-h-[70px] overflow-hidden line-clamp-3">
-                    {item.description}
-                  </span>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span>{item.author}</span>
-                    <Button className="rounded-full">Xem thêm</Button>
+          {filterAll &&
+            Object.entries(filterAll).map(([key, item]) => (
+              <Link
+                to={`/posts/${key}`}
+                key={item.id}
+                className="h-[520px] justify-between flex flex-col cursor-pointer bg-white rounded-xl shadow-xl hover:shadow-2xl"
+              >
+                <img
+                  className="rounded-xl w-full h-[250px] object-cover"
+                  src={item.cover_img}
+                  alt=""
+                />
+                <div className="h-[234px] flex flex-col justify-between gap-4 px-5 py-2">
+                  <h3 className="text-xl font-medium h-auto line-clamp-3">
+                    {item.title}
+                  </h3>
+                  <div className="">
+                    <span className="max-h-[70px] overflow-hidden line-clamp-3">
+                      {item.description}
+                    </span>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span>{item.author}</span>
+                      <Button className="rounded-full">Xem thêm</Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
     </>

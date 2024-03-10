@@ -8,6 +8,7 @@ const PostDetail = () => {
   const dispatch = useDispatch();
   const dataPost = useSelector((state) => state.post.userEdit);
   const { id } = useParams();
+  console.log(dataPost);
 
   const loadData = () => {
     dispatch(findOnePost(id));
