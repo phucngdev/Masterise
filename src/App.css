@@ -14,8 +14,8 @@ img {
   height: 0;
 }
 .active {
-  background-color: rgb(68 64 60);
-  color: #fff;
+  /* background-color: rgb(25, 94, 255); */
+  /* color: #fff; */
 }
 .active span {
   display: block;

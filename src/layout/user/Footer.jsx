@@ -9,10 +9,6 @@ const Footer = () => {
   return (
     <>
       <div className="snap-start">
-        <div className="text-center">
-          <h3>ĐỐI TÁC</h3>
-          <div className="flex"></div>
-        </div>
         <div className="py-10 bg-stone-700 text-center text-white">
           <p className="text-base font-semibold">
             REAL ESTATE DEVELOPMENT LIMITED LIABILITY COMPANY
@@ -22,23 +18,21 @@ const Footer = () => {
             <div className="flex flex-col gap-2 items-start flex-1 text-left">
               <h4 className="text-lg font-medium">Contact</h4>
               <span className="text-sm">Email</span>
-              <span className="text-sm">sales@masterisehomes.com</span>
-              <span className="text-sm">Điện thoại : (028) 39 159 159</span>
+              <span className="text-sm">phucngdev@masterise.com</span>
+              <span className="text-sm">Điện thoại : (+84) 793 395 545</span>
             </div>
             <div className="flex flex-col gap-2 items-start flex-1 text-left">
               <h4 className="text-lg font-medium">
-                TRỤ SỞ CHÍNH - HỒ CHÍ MINH
+                TRỤ SỞ CHÍNH - THÁI NGUYỄN
               </h4>
               <span className="text-sm">
-                TMDV số 19-23, Masteri An Phú, 179 Xa Lộ Hà Nội, Phường Thảo
-                Điền, Thành phố Thủ Đức
+                Việt Cường, Hoá Thượng, Đồng Hỷ, Thái Nguyễn
               </span>
             </div>
             <div className="flex flex-col gap-2 items-start flex-1 text-left">
               <h4 className="text-lg font-medium">VĂN PHÒNG HÀ NỘI</h4>
               <span className="text-sm">
-                Tầng 1, Tòa nhà T26, Times City, 458 Minh Khai, Quận Hai Bà
-                Trưng, Hà Nội
+                Tầng 6, Tòa nhà 8, Xuân Đỉnh, Quận Bắc Từ Liêm, Hà Nội
               </span>
             </div>
             <div className="flex flex-col gap-2 items-start flex-1 text-left">
@@ -58,10 +52,8 @@ const Footer = () => {
                 A MEMBER OF MASTERISE GROUP
               </h4>
               <span className="text-sm">
-                Website thuộc sở hữu bởi: CÔNG TY CỔ PHẦN TẬP ĐOÀN MASTERISE
-                GCNĐKDN số 0304840018 do Phòng ĐKKD Thành phố Hồ Chí Minh cấp,
-                đăng ký lần thứ 18 ngày 12/05/2020 Bản quyền ©2019 thuộc về Công
-                Ty Cổ phần Tập đoàn Masterise
+                Website thuộc sở hữu bởi: CÔNG TY CỔ PHẦN TẬP ĐOÀN MASTERISE Bản
+                quyền ©2024 thuộc về phucngdev
               </span>
             </div>
           </div>

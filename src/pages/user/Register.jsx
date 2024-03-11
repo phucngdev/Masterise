@@ -32,10 +32,10 @@ const Register = () => {
       };
       dispatch(post(newUser));
       message.success({
-        content: "Registration successful. Welcome!",
+        content: "Đăng ký thành công. Welcome!",
       });
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dang-nhap");
       }, 1000);
     }
   };
@@ -64,7 +64,7 @@ const Register = () => {
             <h3 className="text-3xl text-black font-medium">
               Welcome To Masterise
             </h3>
-            <span className="mt-3">Please enter your info</span>
+            <span className="mt-3">Vui lòng cung cấp thông tin của bạn</span>
             <form onSubmit={handleRegister} className="mt-3 flex flex-col">
               <Input
                 className="py-2 my-2 border-black"
@@ -84,7 +84,7 @@ const Register = () => {
                 htmlType="submit"
                 className="mt-4 text-lg py-5 font-medium bg-blue-600 text-white flex items-center justify-center"
               >
-                Register
+                Đăng ký
               </Button>
             </form>
             <div className="my-5 flex items-center justify-between">
@@ -101,9 +101,9 @@ const Register = () => {
               Facebook
             </Button>
             <span className="mt-5 text-center">
-              You have account?{" "}
-              <Link to="/login" className="text-blue-600">
-                Login
+              Bạn dã có tài khoản?{" "}
+              <Link to="/dang-nhap" className="text-blue-600">
+                Đăng nhập
               </Link>
             </span>
           </div>

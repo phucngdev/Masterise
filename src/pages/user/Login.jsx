@@ -79,7 +79,7 @@ const Login = () => {
           </div>
           <div className="flex-1 flex flex-col py-5 px-10 bg-white h-full">
             <h3 className="text-3xl text-black font-medium">Welcome Back</h3>
-            <span className="mt-3">Please enter your info</span>
+            <span className="mt-3">Vui lòng nhập thông tin của bạn</span>
             <form onSubmit={handleLogin} className="mt-3 flex flex-col">
               <Input
                 className="py-2 my-2 border-black"
@@ -95,12 +95,12 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Link className="my-2">Forgot password?</Link>
+              <Link className="my-2">Quên mật khẩu?</Link>
               <Button
                 htmlType="submit"
                 className="text-lg py-5 font-medium bg-blue-600 text-white flex items-center justify-center"
               >
-                Log in
+                Đăng nhập
               </Button>
             </form>
             <div className="my-5 flex items-center justify-between">
@@ -117,9 +117,9 @@ const Login = () => {
               Facebook
             </Button>
             <span className="mt-5 text-center">
-              You don't have account?{" "}
-              <Link to="/register" className="text-blue-600">
-                Register
+              Bạn chưa có tài khoản?{" "}
+              <Link to="/dang-ky" className="text-blue-600">
+                Đăng ký
               </Link>
             </span>
           </div>

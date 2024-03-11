@@ -9,10 +9,69 @@ import {
   TabletOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Navigate from "../../components/user/Navigate";
-import { Button, Modal, Popconfirm, message } from "antd";
+import { Button, Modal, Popconfirm, Tabs, message } from "antd";
+import Home from "../../pages/user/Home";
 
+const items = [
+  {
+    key: "1",
+    label: (
+      <>
+        <Navigate navigate={"/"} icon={<CrownOutlined />} text={"Trang chủ"} />
+      </>
+    ),
+  },
+  {
+    key: "2",
+    label: (
+      <>
+        <Navigate
+          navigate={"/dich-vu"}
+          icon={<ShopOutlined />}
+          text={"Dịch vụ"}
+        />
+      </>
+    ),
+  },
+  {
+    key: "3",
+    label: (
+      <>
+        <Navigate
+          navigate={"/tin-tuc"}
+          icon={<ProfileOutlined />}
+          text={"Tin tức"}
+        />
+      </>
+    ),
+  },
+  {
+    key: "4",
+    label: (
+      <>
+        <Navigate
+          navigate={"/uu-thich"}
+          icon={<HeartOutlined />}
+          text={"Ưu thích"}
+        />
+      </>
+    ),
+  },
+  {
+    key: "5",
+    label: (
+      <>
+        <Navigate
+          navigate={"/lien-he"}
+          icon={<TabletOutlined />}
+          text={"Liên hệ"}
+        />
+      </>
+    ),
+  },
+];
 const Header = ({ userLogin, setUserLogin }) => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,42 +92,46 @@ const Header = ({ userLogin, setUserLogin }) => {
   };
   return (
     <>
-      <div className="w-full z-[999] px-[5%] fixed top-0  bg-white bg-opacity-90 mx-auto h-[60px] flex items-center justify-between ">
+      <div className="w-full z-[999] px-[5%] fixed top-0 shadow-xl bg-white bg-opacity-90 mx-auto h-[60px] flex items-center justify-between ">
         <Link to="/" className=" font-bold text-3xl ">
-          Masteriseland
+          Masterise
         </Link>
         <div className="flex items-center gap-3 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <Navigate navigate={"/"} icon={<CrownOutlined />} text={"Home"} />
+          <Tabs defaultActiveKey="1" items={items} />
+          {/* <Navigate
+            navigate={"/"}
+            icon={<CrownOutlined />}
+            text={"Trang chủ"}
+          /> */}
 
-          <Navigate
-            navigate={"/buys"}
-            icon={<DollarOutlined />}
-            text={"Buys"}
-          />
-          <Navigate navigate={"/rent"} icon={<ShopOutlined />} text={"Rent"} />
-          <Navigate
-            navigate={"/posts"}
+          {/* <Navigate
+            navigate={"/dich-vu"}
+            icon={<ShopOutlined />}
+            text={"Dịch vụ"}
+          /> */}
+          {/* <Navigate
+            navigate={"/tin-tuc"}
             icon={<ProfileOutlined />}
-            text={"Posts"}
-          />
-          <Navigate
-            navigate={"/likes"}
+            text={"Tin tức"}
+          /> */}
+          {/* <Navigate
+            navigate={"/uu-thich"}
             icon={<HeartOutlined />}
-            text={"Likes"}
-          />
-          <Navigate
-            navigate={"/contact"}
+            text={"Ưu thích"}
+          /> */}
+          {/* <Navigate
+            navigate={"/lien-he"}
             icon={<TabletOutlined />}
-            text={"Contact"}
-          />
+            text={"Liên hệ"}
+          /> */}
         </div>
         <div className="flex items-center gap-3 max-w-[200px]">
-          <Navigate navigate={"/notification"} icon={<BellOutlined />} />
+          <Navigate navigate={"/thong-bao"} icon={<BellOutlined />} />
           {userLogin ? (
             <Popconfirm
               title={
                 <>
-                  <h3 className="text-center">Log out here</h3>
+                  <h3 className="text-center">Xác nhận đăng xuất</h3>
                 </>
               }
               description={
@@ -78,7 +141,7 @@ const Header = ({ userLogin, setUserLogin }) => {
                     danger
                     className="mt-5 px-8 py-5 flex items-center justify-center"
                   >
-                    Log out
+                    Đăng xuất
                   </Button>
                 </>
               }
@@ -89,9 +152,9 @@ const Header = ({ userLogin, setUserLogin }) => {
             </Popconfirm>
           ) : (
             <Navigate
-              navigate={"/login"}
+              navigate={"/dang-nhap"}
               icon={<UserOutlined />}
-              text={"Login"}
+              text={"Đăng nhập"}
             />
           )}
         </div>

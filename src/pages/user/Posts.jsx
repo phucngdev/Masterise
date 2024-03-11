@@ -26,7 +26,7 @@ const Posts = () => {
           filteredData[key] = value;
         }
       }
-      setFilterAll(status === 9 ? dataPost : filteredData);
+      setFilterAll(filteredData);
     } else {
       setFilterAll(null); // Đặt filterAll thành null khi không có dữ liệu
     }
@@ -45,7 +45,7 @@ const Posts = () => {
           {filterAll &&
             Object.entries(filterAll).map(([key, item]) => (
               <Link
-                to={`/posts/${key}`}
+                to={`/tin-tuc/${key}`}
                 key={item.id}
                 className="h-[520px] justify-between flex flex-col cursor-pointer bg-white rounded-xl shadow-xl hover:shadow-2xl"
               >

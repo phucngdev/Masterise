@@ -26,83 +26,76 @@ const items = [
   getItem(
     <>
       <NavLink to="/admin" className="text-black bg-transparent">
-        Dashboard
+        Tổng quan
       </NavLink>
     </>,
     "sub1",
     <AppstoreOutlined />
   ),
-  getItem("Posts", "sub2", <FormOutlined />, [
-    getItem("Post list", "sub2-1", <ContainerOutlined />, [
+  getItem("Bài viết", "sub2", <FormOutlined />, [
+    getItem("Danh sách", "sub2-1", <ContainerOutlined />, [
       getItem(
-        <NavLink to="/admin/posts-list" className="text-black bg-transparent">
-          List all
+        <NavLink
+          to="/admin/danh-sach-bai-viet"
+          className="text-black bg-transparent"
+        >
+          Danh sách bài viết
         </NavLink>,
         "2-1",
         <ProjectOutlined />
       ),
       getItem(
-        <NavLink to="/admin/posted-list" className="text-black bg-transparent">
-          Posted
+        <NavLink
+          to="/admin/bai-viet-da-dang"
+          className="text-black bg-transparent"
+        >
+          Bài viết đã đăng
         </NavLink>,
         "2-2",
         <CarryOutOutlined />
       ),
       getItem(
         <NavLink
-          to="/admin/posts-created"
+          to="/admin/bai-viet-da-tao"
           className="text-black bg-transparent"
         >
-          Created
+          Bài viết đã tạo
         </NavLink>,
         "2-3",
         <SelectOutlined />
       ),
       getItem(
-        <NavLink to="/admin/posts-hidden" className="text-black bg-transparent">
-          Hidden
+        <NavLink to="/admin/bai-viet-an" className="text-black bg-transparent">
+          Bài viết ẩn
         </NavLink>,
         "2-4",
         <MergeCellsOutlined />
       ),
     ]),
     getItem(
-      <NavLink to="/admin/create-post" className="text-black bg-transparent">
-        Create Post
+      <NavLink
+        to="/admin/tao-moi-bai-viet"
+        className="text-black bg-transparent"
+      >
+        Tạo mới bài viết
       </NavLink>,
       "2-5",
       <EditOutlined />
     ),
   ]),
-  getItem("Buys", "sub3", <FormOutlined />, [
+  getItem("Dịch vụ", "sub3", <FormOutlined />, [
     getItem(
-      <NavLink to="/admin/buy-list" className="text-black bg-transparent">
-        List
+      <NavLink to="/admin/camping" className="text-black bg-transparent">
+        Camping
       </NavLink>,
-      "4",
+      "3-1",
       <ContainerOutlined />
     ),
     getItem(
-      <NavLink to="/admin/create-buy" className="text-black bg-transparent">
-        Add New
+      <NavLink to="/admin/phong-nghi" className="text-black bg-transparent">
+        Phòng nghỉ
       </NavLink>,
-      "5",
-      <EditOutlined />
-    ),
-  ]),
-  getItem("Rent", "sub4", <FormOutlined />, [
-    getItem(
-      <NavLink to="/apartment-list" className="text-black bg-transparent">
-        Apartment List
-      </NavLink>,
-      "6",
-      <ContainerOutlined />
-    ),
-    getItem(
-      <NavLink to="/add-new-apartments" className="text-black bg-transparent">
-        Add New Apartments
-      </NavLink>,
-      "7",
+      "3-2",
       <EditOutlined />
     ),
   ]),
