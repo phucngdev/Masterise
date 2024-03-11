@@ -3,16 +3,11 @@ import { Button, Input, Modal, Popconfirm, Tooltip, message } from "antd";
 import { BellOutlined, MessageOutlined } from "@ant-design/icons";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectQuery, setQuery } from "../../redux/useSlice/searchSlice";
 
 const Header = ({ adminLogin, setAdminLogin }) => {
   const navigate = useNavigate();
-  const query = useSelector(selectQuery);
   const dispatch = useDispatch();
 
-  const handleSearchChange = (e) => {
-    dispatch(setQuery(e.target.value));
-  };
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -44,12 +39,7 @@ const Header = ({ adminLogin, setAdminLogin }) => {
         <Link to="/admin" className="text-3xl text-black font-semibold">
           MASTERISE
         </Link>
-        <Input
-          value={query}
-          onChange={handleSearchChange}
-          placeholder="Search"
-          className="w-[35%] border-black"
-        />
+        <Input placeholder="Search" className="w-[35%] border-black" />
         <div className="flex items-center gap-4">
           <Tooltip placement="bottom" title="message">
             <MessageOutlined className="text-xl p-2 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300" />

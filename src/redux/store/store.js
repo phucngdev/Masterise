@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "../useSlice/userSlice";
-import searchSlice from "../useSlice/searchSlice";
 import postSlice from "../useSlice/postSlice";
+import utilsSlice from "../useSlice/utilsSlice";
 
 const store = configureStore({
   reducer: {
     user: userSlice,
     post: postSlice,
-    search: searchSlice,
+    utils: utilsSlice,
   },
 });
 export default store;

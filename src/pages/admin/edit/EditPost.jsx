@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useFormik } from "formik";
-import { findOnePost, uploadPost } from "../../service/post.service";
 import * as Yup from "yup";
 import "react-markdown-editor-lite/lib/index.css";
 import { Button, Input, message } from "antd";
-import UploadSingle from "../../components/admin/UploadSingle";
-import TextEditor from "../../components/admin/TextEditor";
 import TextArea from "antd/es/input/TextArea";
 import { useParams } from "react-router-dom";
+import { findOnePost } from "../../../service/post.service";
+import UploadSingle from "../../../components/admin/UploadSingle";
+import TextEditor from "../../../components/admin/TextEditor";
 
 const EditPost = () => {
   const dispatch = useDispatch();

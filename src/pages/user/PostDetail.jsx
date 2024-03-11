@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { findOnePost } from "../../service/post.service";
 import poster from "../../../public/poster-post.png";
+import { findOneData } from "../../service/utils.service";
 
 const PostDetail = () => {
   const dispatch = useDispatch();
-  const dataPost = useSelector((state) => state.post.userEdit);
+  const dataPost = useSelector((state) => state.utils.dataEdit);
   const { id } = useParams();
 
   const loadData = () => {
-    dispatch(findOnePost(id));
+    dispatch(findOneData({ data: "posts", key: id }));
   };
 
   useEffect(() => {

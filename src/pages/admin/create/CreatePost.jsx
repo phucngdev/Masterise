@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useFormik } from "formik";
-import { createPost, uploadPost } from "../../service/post.service";
 import * as Yup from "yup";
 import "react-markdown-editor-lite/lib/index.css";
 import { Button, Input, message } from "antd";
-import UploadSingle from "../../components/admin/UploadSingle";
-import TextEditor from "../../components/admin/TextEditor";
+import UploadSingle from "../../../components/admin/UploadSingle";
+import TextEditor from "../../../components/admin/TextEditor";
 import TextArea from "antd/es/input/TextArea";
+import { createData } from "../../../service/utils.service";
 
 const CreatePost = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const CreatePost = () => {
         status: 0, // dự định: 0 đã tạo, 1 đã đăng, 2 đã ẩn
         created_at: new Date().toLocaleString(),
       };
-      dispatch(createPost(newPost));
+      dispatch(createData({ data: "posts", dataPost: newPost }));
       message.success({
         content: "Upload successful!",
       });

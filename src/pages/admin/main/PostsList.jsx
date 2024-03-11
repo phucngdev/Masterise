@@ -1,29 +1,28 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  findAllPost,
-  removePost,
-  uploadPost,
-} from "../../service/post.service";
-import { Button, Image, Modal, message } from "antd";
+import { Button, Modal, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  findAllData,
+  removeData,
+  upDateData,
+} from "../../../service/utils.service";
 
 const PostsList = ({ status }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // lấy data
-  const dataPost = useSelector((state) => state.post.data);
+  const dataPost = useSelector((state) => state.utils.data);
   const [filterAll, setFilterAll] = useState();
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalUploadOpen, setIsModalUploadOpen] = useState(false);
   const [isModalHiddenOpen, setIsModalHiddenOpen] = useState(false);
   const [isModalUnHiddenOpen, setIsModalUnHiddenOpen] = useState(false);
   const [key, setKey] = useState("");
-  console.log(key);
 
   // hàm lấy data
   const loadData = () => {
-    dispatch(findAllPost());
+    dispatch(findAllData("posts"));
   };
 
   // load data lần đầu tien render
@@ -54,7 +53,7 @@ const PostsList = ({ status }) => {
 
   // hàm xác nhận xoá
   const handleOkDelete = () => {
-    dispatch(removePost(key))
+    dispatch(removeData({ data: "posts", key: key }))
       .then(() => {
         message.success({
           content: "Delete successfully",
@@ -95,7 +94,13 @@ const PostsList = ({ status }) => {
 
   // hàm đăng bài
   const handleOkUpload = (statusUpload) => {
-    dispatch(uploadPost({ id: key, statusUpdate: { status: statusUpload } }))
+    dispatch(
+      upDateData({
+        data: "posts",
+        id: key,
+        statusUpdate: { status: statusUpload },
+      })
+    )
       .then(() => {
         message.success({
           content: `${statusUpload === 1 ? "Upload" : "Hidden"} successfully`,
@@ -115,7 +120,7 @@ const PostsList = ({ status }) => {
 
   // hàm chuyển hướng đến trang sửa
   const handleEdit = (key) => {
-    navigate(`/admin/edit-post/${key}`);
+    navigate(`/admin/chinh-sua-bai-viet/${key}`);
   };
 
   return (
@@ -167,7 +172,7 @@ const PostsList = ({ status }) => {
                 <div key={key} className="h-[200px] flex items-center border">
                   <div className="w-[5%] text-center">{}</div>
                   <Link
-                    to={`/admin/preview-post/${key}`}
+                    to={`/admin/xem-bai-viet/${key}`}
                     className="w-[55%] border-x p-2"
                   >
                     <div className="flex items-center gap-3">
@@ -188,7 +193,9 @@ const PostsList = ({ status }) => {
                   <div className="w-[20%] flex flex-col gap-2 items-center justify-around">
                     <Button
                       // onClick={() => handleEdit(key)}
-                      onClick={() => navigate(`/admin/edit-post/${key}`)}
+                      onClick={() =>
+                        navigate(`/admin/chinh-sua-bai-viet/${key}`)
+                      }
                       className="w-[70%] "
                       type="default"
                       htmlType="button"

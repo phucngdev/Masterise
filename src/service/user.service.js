@@ -15,8 +15,8 @@ export const findAll = createAsyncThunk("user/findAll", async () => {
 // hàm xóa 1 bản ghi theo id
 export const remove = createAsyncThunk("user/remove", async (id) => {
   try {
-    let response = await baseUrl.delete(`users.json/${id}`);
-    return response;
+    let response = await baseUrl.delete(`users/${id}.json`);
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -25,7 +25,7 @@ export const remove = createAsyncThunk("user/remove", async (id) => {
 //hàm tìm kiếm thông tin một bản ghi theo id
 export const findOne = createAsyncThunk("user/findOne", async (id) => {
   try {
-    let response = await baseUrl.get(`users.json/${id}`);
+    let response = await baseUrl.get(`users/${id}.json`);
     return response.data;
   } catch (error) {
     console.log(error);

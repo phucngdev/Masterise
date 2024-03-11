@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import poster from "../../../public/poster-post.png";
 import { useDispatch, useSelector } from "react-redux";
-import { findAllPost } from "../../service/post.service";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { findAllData } from "../../service/utils.service";
 const Posts = () => {
   const dispatch = useDispatch();
-  const dataPost = useSelector((state) => state.post.data);
+  const dataPost = useSelector((state) => state.utils.data);
   const [filterAll, setFilterAll] = useState();
 
   const loadData = () => {
-    dispatch(findAllPost());
+    dispatch(findAllData("posts"));
   };
 
   useEffect(() => {
