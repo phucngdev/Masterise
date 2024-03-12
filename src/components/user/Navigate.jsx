@@ -6,7 +6,7 @@ const Navigate = ({ navigate, icon, text }) => {
     <>
       <NavLink
         to={navigate}
-        className="hover:bg-blue-300 hover:text-white flex items-center gap-1 px-3 py-2 rounded-lg "
+        className="flex items-center gap-1 px-3 py-2 rounded-lg "
       >
         {icon}
         <span className="">{text}</span>

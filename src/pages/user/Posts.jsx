@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { findAllData } from "../../service/utils.service";
+import Footer from "../../layout/user/Footer";
 const Posts = () => {
   const dispatch = useDispatch();
   const dataPost = useSelector((state) => state.utils.data);
@@ -71,6 +72,7 @@ const Posts = () => {
               </Link>
             ))}
         </div>
+        <Footer></Footer>
       </div>
     </>
   );

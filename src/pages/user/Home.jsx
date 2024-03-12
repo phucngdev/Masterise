@@ -7,7 +7,83 @@ import ic04 from "../../../public/ic04.png";
 import ic05 from "../../../public/ic05.png";
 import ic06 from "../../../public/ic06.png";
 import line2 from "../../../public/line2.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import { Button, Tabs } from "antd";
+import { Link } from "react-router-dom";
 
+const items = [
+  {
+    key: "1",
+    label: "Camping",
+    children: <></>,
+  },
+  {
+    key: "2",
+    label: "Camping",
+    children: <></>,
+  },
+  {
+    key: "3",
+    label: "Camping",
+    children: <></>,
+  },
+  {
+    key: "4",
+    label: "Camping",
+  },
+  // {
+  //   key: "2",
+  //   label: (
+  //     <>
+  //       <Navigate
+  //         navigate={"/dich-vu"}
+  //         icon={<ShopOutlined />}
+  //         text={"Dịch vụ"}
+  //       />
+  //     </>
+  //   ),
+  // },
+  // {
+  //   key: "3",
+  //   label: (
+  //     <>
+  //       <Navigate
+  //         navigate={"/tin-tuc"}
+  //         icon={<ProfileOutlined />}
+  //         text={"Tin tức"}
+  //       />
+  //     </>
+  //   ),
+  // },
+  // {
+  //   key: "4",
+  //   label: (
+  //     <>
+  //       <Navigate
+  //         navigate={"/uu-thich"}
+  //         icon={<HeartOutlined />}
+  //         text={"Ưu thích"}
+  //       />
+  //     </>
+  //   ),
+  // },
+  // {
+  //   key: "5",
+  //   label: (
+  //     <>
+  //       <Navigate
+  //         navigate={"/lien-he"}
+  //         icon={<TabletOutlined />}
+  //         text={"Liên hệ"}
+  //       />
+  //     </>
+  //   ),
+  // },
+];
 const Home = () => {
   return (
     <>
@@ -30,23 +106,32 @@ const Home = () => {
         </section>
         <section className="w-full h-screen flex flex-col gap-10 items-center justify-center snap-start bg-[#7a4e4e]">
           <div className="flex items-center justify-center gap-7">
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic01} alt="" />
               <h3 className="text-xl font-semibold">Ẩm thực đa dạng</h3>
               <p>
                 Đến với Masterise, du khách sẽ được thưởng thức những món ăn
                 ngon, những trải nghiệm ẩm thực đa dạng, độc đáo
               </p>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            </Link>
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic02} alt="" />
               <h3 className="text-xl font-semibold">Không gian thiên nhiên</h3>
               <p>
                 Masterise nằm trọn trong quần thể du lịch Đồng Mô, sở hữu cảnh
                 quan, không gian thiên nhiên ấn tượng và trong lành
               </p>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            </Link>
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic03} alt="" />
               <h3 className="text-xl font-semibold">Vị trí tốt nhất</h3>
               <p>
@@ -54,18 +139,24 @@ const Home = () => {
                 thể trải nghiệm mọi cùng thời gian bạn có, dù nửa ngày hay 1
                 ngày
               </p>
-            </div>
+            </Link>
           </div>
           <div className="flex items-center justify-center gap-7">
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic04} alt="" />
               <h3 className="text-xl font-semibold">Đặt phòng đơn giản</h3>
               <p>
                 Đến với Masterise các bạn có thể trải nghiệm được tất cả các mùa
                 trong năm của khí hậu Miền Bắc.
               </p>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            </Link>
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic05} alt="" />
               <h3 className="text-xl font-semibold">Phục vụ tận tình</h3>
               <p>
@@ -73,25 +164,26 @@ const Home = () => {
                 thước đo cho sự thành công của mình, cho nên các dịch vụ đều
                 được phục vụ ở mức tốt nhất
               </p>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center">
+            </Link>
+            <Link
+              to="/"
+              className="flex flex-col items-center justify-center gap-5 w-[30%] text-white text-center"
+            >
               <img className="w-[80px] h-full object-cover" src={ic06} alt="" />
               <h3 className="text-xl font-semibold">Phòng nghỉ độc đáo</h3>
               <p>
                 Đến với Masterise bạn sẽ được trải nghiệm các loại hình lưu trú
                 độc đáo, mới lạ như nhà container house, glamping tent, camping
               </p>
-            </div>
+            </Link>
           </div>
         </section>
-        <section className="w-full h-screen flex flex-col items-center justify-center snap-start">
-          <h2 className="text-3xl font-bold font-sans mb-1">CẮM TRẠI</h2>
-          <img src={line2} alt="" />
-          <div className="flex items-center justify-center">
-            <div className="flex flex-col">
-              <img src="" alt="" />
-            </div>
+        <section className="w-full h-[100vh]  flex flex-col gap-5 items-center justify-center snap-start px-10">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-bold font-sans">CẮM TRẠI</h2>
+            <img className="w-[200px] mb-5" src={line2} alt="" />
           </div>
+          <Tabs defaultActiveKey="1" items={items} />
         </section>
         <Footer></Footer>
       </div>

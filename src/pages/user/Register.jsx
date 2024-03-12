@@ -5,22 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { post } from "../../service/user.service";
+import logo from "../../../public/logo-white.svg";
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repassword, setRePassword] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
     if (userEmail === "") {
       message.info({
-        content: "Please enter your email",
+        content: "Vui lòng nhập email",
       });
     } else if (password === "") {
       message.info({
-        content: "Please enter your password",
+        content: "Vui lòng nhập mật khẩu",
+      });
+    } else if (repassword != password) {
+      message.info({
+        content: "Mật khẩu không khớp",
       });
     } else {
       const newUser = {
@@ -50,6 +56,9 @@ const Register = () => {
       <div className="w-full h-[100vh] flex justify-center items-center">
         <div className="flex justify-around items-center rounded-2xl w-[80%] h-[80%] bg-blue-200 bg-opacity-50">
           <div className="w-[60%] flex flex-col gap-3 items-center justify-center">
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
             <Link to="/" className="text-5xl mb-5 text-white font-extrabold">
               MASTERISE LAND
             </Link>
@@ -69,16 +78,23 @@ const Register = () => {
               <Input
                 className="py-2 my-2 border-black"
                 type="text"
-                placeholder="Your email"
+                placeholder="email"
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
               />
               <Input
                 className="py-2 my-2 border-black"
                 type="password"
-                placeholder="Password"
+                placeholder="Mật khẩu"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+              />
+              <Input
+                className="py-2 my-2 border-black"
+                type="password"
+                placeholder="Nhập lại mật khảu"
+                value={repassword}
+                onChange={(e) => setRePassword(e.target.value)}
               />
               <Button
                 htmlType="submit"

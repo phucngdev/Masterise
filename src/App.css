@@ -13,10 +13,7 @@ img {
   width: 0;
   height: 0;
 }
-.active {
-  /* background-color: rgb(25, 94, 255); */
-  /* color: #fff; */
-}
+
 .active span {
   display: block;
 }
@@ -28,4 +25,15 @@ img {
 }
 .ant-tabs-tab {
   padding: 4px 0 !important;
+}
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

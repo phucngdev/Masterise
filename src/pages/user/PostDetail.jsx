@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import poster from "../../../public/poster-post.png";
 import { findOneData } from "../../service/utils.service";
+import Footer from "../../layout/user/Footer";
 
 const PostDetail = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const PostDetail = () => {
             dangerouslySetInnerHTML={{ __html: dataPost?.content }}
           />
         </div>
+        <Footer></Footer>
       </div>
     </>
   );

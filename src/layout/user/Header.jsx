@@ -98,32 +98,6 @@ const Header = ({ userLogin, setUserLogin }) => {
         </Link>
         <div className="flex items-center gap-3 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <Tabs defaultActiveKey="1" items={items} />
-          {/* <Navigate
-            navigate={"/"}
-            icon={<CrownOutlined />}
-            text={"Trang chủ"}
-          /> */}
-
-          {/* <Navigate
-            navigate={"/dich-vu"}
-            icon={<ShopOutlined />}
-            text={"Dịch vụ"}
-          /> */}
-          {/* <Navigate
-            navigate={"/tin-tuc"}
-            icon={<ProfileOutlined />}
-            text={"Tin tức"}
-          /> */}
-          {/* <Navigate
-            navigate={"/uu-thich"}
-            icon={<HeartOutlined />}
-            text={"Ưu thích"}
-          /> */}
-          {/* <Navigate
-            navigate={"/lien-he"}
-            icon={<TabletOutlined />}
-            text={"Liên hệ"}
-          /> */}
         </div>
         <div className="flex items-center gap-3 max-w-[200px]">
           <Navigate navigate={"/thong-bao"} icon={<BellOutlined />} />

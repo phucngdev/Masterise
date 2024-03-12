@@ -25,7 +25,7 @@ const PrivateRouter = () => {
           </div>
         </>
       ) : (
-        <Navigate to="/login" />
+        <Navigate to="/dang-nhap" />
       )}
     </>
   );

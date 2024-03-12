@@ -3,20 +3,21 @@ import { Button, Input, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
-import { findAll } from "../../service/user.service";
+import logo from "../../../public/logo-white.svg";
+import { findAllData } from "../../service/utils.service";
 
 const Login = () => {
   const navigate = useNavigate();
   // state chua du lieu
   const dispatch = useDispatch();
   // lấy dữ liệu trong kho lưu trữ
-  const dataUser = useSelector((state) => state.user.data);
+  const dataUser = useSelector((state) => state.utils.data);
   const [dataChangeArr, setDataChangeArr] = useState([]);
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loadData = () => {
-    dispatch(findAll());
+    dispatch(findAllData("users"));
   };
   useEffect(() => {
     loadData();
@@ -30,11 +31,11 @@ const Login = () => {
     e.preventDefault();
     if (userEmail === "") {
       message.info({
-        content: "Please enter your email",
+        content: "Vui lòng nhập email",
       });
     } else if (password === "") {
       message.info({
-        content: "Please enter your password",
+        content: "Vui lòng nhập mật khẩu",
       });
     } else {
       const findUser = dataChangeArr?.find(
@@ -51,7 +52,7 @@ const Login = () => {
             localStorage.setItem("adminLogin", JSON.stringify(findUser));
       } else {
         message.error({
-          content: "Login failed. Please check your credentials.",
+          content: "Vui lòng kiểm tra lại thông tin đăng nhập",
         });
       }
     }
@@ -67,6 +68,9 @@ const Login = () => {
       <div className="w-full h-[100vh] flex justify-center items-center">
         <div className="flex justify-around items-center rounded-2xl w-[80%] h-[80%] bg-blue-200 bg-opacity-50">
           <div className="w-[60%] flex flex-col gap-3 items-center justify-center">
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
             <Link to="/" className="text-5xl mb-5 text-white font-extrabold">
               MASTERISE LAND
             </Link>
