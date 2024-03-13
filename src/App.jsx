@@ -22,7 +22,7 @@ import CreatePost from "./pages/admin/create/CreatePost";
 import EditPost from "./pages/admin/edit/EditPost";
 import PreviewPost from "./pages/admin/view:id/PreviewPost";
 import Camping from "./pages/admin/main/Camping";
-import CreateCamping from "./pages/admin/create/CreateCamping";
+import CreateService from "./pages/admin/create/CreateService";
 
 function App() {
   const location = useLocation();
@@ -60,7 +60,7 @@ function App() {
           <Route path="xem-bai-viet/:id" element={<PreviewPost />} />
           {/* dịch vụ */}
           <Route path="camping" element={<Camping />} />
-          <Route path="tao-moi-camping" element={<CreateCamping />} />
+          <Route path="tao-moi-camping" element={<CreateService />} />
         </Route>
       </Routes>
     </>

@@ -14,74 +14,33 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Button, Tabs } from "antd";
 import { Link } from "react-router-dom";
+import TabsObj from "../../layout/user/TabsObj";
 
 const items = [
   {
     key: "1",
-    label: "Camping",
-    children: <></>,
+    label: "Cắm trại",
+    children: <TabsObj category={"camping"}></TabsObj>,
   },
   {
     key: "2",
-    label: "Camping",
-    children: <></>,
+    label: "Homestay",
+    children: <TabsObj category={"homestay"}></TabsObj>,
   },
   {
     key: "3",
-    label: "Camping",
-    children: <></>,
+    label: "Villa",
+    children: <TabsObj category={"villa"}></TabsObj>,
   },
   {
     key: "4",
-    label: "Camping",
+    label: "Khách sạn",
+    children: <TabsObj category={"hotel"}></TabsObj>,
   },
   // {
-  //   key: "2",
-  //   label: (
-  //     <>
-  //       <Navigate
-  //         navigate={"/dich-vu"}
-  //         icon={<ShopOutlined />}
-  //         text={"Dịch vụ"}
-  //       />
-  //     </>
-  //   ),
-  // },
-  // {
-  //   key: "3",
-  //   label: (
-  //     <>
-  //       <Navigate
-  //         navigate={"/tin-tuc"}
-  //         icon={<ProfileOutlined />}
-  //         text={"Tin tức"}
-  //       />
-  //     </>
-  //   ),
-  // },
-  // {
-  //   key: "4",
-  //   label: (
-  //     <>
-  //       <Navigate
-  //         navigate={"/uu-thich"}
-  //         icon={<HeartOutlined />}
-  //         text={"Ưu thích"}
-  //       />
-  //     </>
-  //   ),
-  // },
-  // {
   //   key: "5",
-  //   label: (
-  //     <>
-  //       <Navigate
-  //         navigate={"/lien-he"}
-  //         icon={<TabletOutlined />}
-  //         text={"Liên hệ"}
-  //       />
-  //     </>
-  //   ),
+  //   label: "Garden glamping",
+  //   children: <TabsObj></TabsObj>,
   // },
 ];
 const Home = () => {
@@ -178,12 +137,12 @@ const Home = () => {
             </Link>
           </div>
         </section>
-        <section className="w-full h-[100vh]  flex flex-col gap-5 items-center justify-center snap-start px-10">
+        <section className="w-full h-[100vh]  flex flex-col gap-5 items-center justify-center snap-start px-[72px]">
           <div className="flex flex-col items-center">
-            <h2 className="text-3xl font-bold font-sans">CẮM TRẠI</h2>
+            <h2 className="text-2xl font-bold font-sans">NGHỈ DƯỠNG</h2>
             <img className="w-[200px] mb-5" src={line2} alt="" />
           </div>
-          <Tabs defaultActiveKey="1" items={items} />
+          <Tabs className="w-full " defaultActiveKey="1" items={items} />
         </section>
         <Footer></Footer>
       </div>
