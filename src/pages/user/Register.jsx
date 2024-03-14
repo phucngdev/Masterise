@@ -2,49 +2,52 @@ import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Button, Input, message } from "antd";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { post } from "../../service/user.service";
 import logo from "../../../public/logo-white.svg";
+import useDataActions from "../../hooks/useDataActions";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const Register = () => {
-  const dispatch = useDispatch();
+  const { handleCreate } = useDataActions("users");
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repassword, setRePassword] = useState("");
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    if (userEmail === "") {
-      message.info({
-        content: "Vui lòng nhập email",
-      });
-    } else if (password === "") {
-      message.info({
-        content: "Vui lòng nhập mật khẩu",
-      });
-    } else if (repassword != password) {
-      message.info({
-        content: "Mật khẩu không khớp",
-      });
-    } else {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      confirm_password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .required("email không được để trống")
+        .email("email không hợp lệ"),
+      password: Yup.string().required("Mật khẩu không được để trống"),
+      confirm_password: Yup.string()
+        .oneOf([Yup.ref("password")], "Mật khẩu không khớp")
+        .required("Nhập lại mật khẩu"),
+    }),
+    onSubmit: async (values) => {
       const newUser = {
         id: uuidv4(),
-        email: userEmail,
-        password: password,
+        email: values.email,
+        password: values.password,
         type: "user",
         createdTime: new Date().toLocaleString(),
       };
-      dispatch(post(newUser));
-      message.success({
-        content: "Đăng ký thành công. Welcome!",
-      });
-      setTimeout(() => {
-        navigate("/dang-nhap");
-      }, 1000);
-    }
-  };
+      try {
+        handleCreate(newUser);
+        message.success({
+          content: "Đăng ký thành công. Welcome!",
+        });
+        setTimeout(() => {
+          navigate("/dang-nhap");
+        }, 1000);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
 
   return (
     <>
@@ -74,28 +77,47 @@ const Register = () => {
               Welcome To Masterise
             </h3>
             <span className="mt-3">Vui lòng cung cấp thông tin của bạn</span>
-            <form onSubmit={handleRegister} className="mt-3 flex flex-col">
+            <form onSubmit={formik.handleSubmit} className="mt-3 flex flex-col">
               <Input
                 className="py-2 my-2 border-black"
                 type="text"
                 placeholder="email"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
               />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="form-text error text-red-600">
+                  {formik.errors.email}
+                </div>
+              ) : null}
               <Input
                 className="py-2 my-2 border-black"
                 type="password"
                 placeholder="Mật khẩu"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
               />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="form-text error text-red-600">
+                  {formik.errors.password}
+                </div>
+              ) : null}
               <Input
                 className="py-2 my-2 border-black"
                 type="password"
                 placeholder="Nhập lại mật khảu"
-                value={repassword}
-                onChange={(e) => setRePassword(e.target.value)}
+                name="confirm_password"
+                value={formik.values.confirm_password}
+                onChange={formik.handleChange}
               />
+              {formik.touched.confirm_password &&
+              formik.errors.confirm_password ? (
+                <div className="form-text error text-red-600">
+                  {formik.errors.confirm_password}
+                </div>
+              ) : null}
               <Button
                 htmlType="submit"
                 className="mt-4 text-lg py-5 font-medium bg-blue-600 text-white flex items-center justify-center"

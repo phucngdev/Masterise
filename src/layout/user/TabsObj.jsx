@@ -3,24 +3,20 @@ import React, { useEffect, useState } from "react";
 import { findAllData } from "../../service/utils.service";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useDataActions from "../../hooks/useDataActions";
 
 const TabsObj = ({ category }) => {
-  const dispatch = useDispatch();
   const navogate = useNavigate();
-  const data = useSelector((state) => state.utils.data);
-  const [filterAll, setFilterAll] = useState();
-
-  const loadData = () => {
-    dispatch(findAllData(category));
-  };
+  const { data, status, error, handleGetAll } = useDataActions(category);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    handleGetAll(category);
+  }, [category]);
+  console.log(data);
   return (
     <>
       <div className="mt-5 grid grid-cols-5 gap-5">
-        {data &&
+        {/* {data &&
           Object.entries(data).map(([key, item]) => (
             <div
               key={key}
@@ -39,7 +35,7 @@ const TabsObj = ({ category }) => {
                 ĐẶT NGAY
               </Button>
             </div>
-          ))}
+          ))} */}
       </div>
     </>
   );

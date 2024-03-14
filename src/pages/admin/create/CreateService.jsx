@@ -7,8 +7,9 @@ import UploadSingle from "../../../components/admin/UploadSingle";
 import TextEditor from "../../../components/admin/TextEditor";
 import TextArea from "antd/es/input/TextArea";
 import { createPost } from "../../../service/post.service";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Tabs, Input } from "antd";
+import useDataActions from "../../../hooks/useDataActions";
 
 const { TabPane } = Tabs;
 
